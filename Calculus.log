@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2021.12.8)  8 DEC 2021 21:17
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2021.12.8)  8 DEC 2021 21:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1492,8 +1492,8 @@ LaTeX Info: Redefining \] on input line 92.
 LaTeX Font Warning: Font shape `TU/txr/b/n' undefined
 (Font)              using `TU/txr/m/n' instead on input line 106.
 
-File: figure/coin.jpg Graphic file (type bmp)
-<figure/coin.jpg>
+File: figure/Stokes.png Graphic file (type bmp)
+<figure/Stokes.png>
 LaTeX Font Info:    Trying to load font information for OT1+txr on input line 1
 16.
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/ot1txr.fd
@@ -1532,17 +1532,14 @@ LaTeX Font Info:    Trying to load font information for U+txsyc on input line 1
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsyc.fd
 File: utxsyc.fd 2000/12/15 v3.1
 )
-File: figure/schrodingerscat.png Graphic file (type bmp)
-<figure/schrodingerscat.png>
-
 
 LaTeX Font Warning: Font shape `TU/txr/m/sc' undefined
-(Font)              using `TU/txr/m/n' instead on input line 124.
+(Font)              using `TU/txr/m/n' instead on input line 121.
 
 
 LaTeX Font Warning: Font shape `TU/FandolSong-Regular(0)/m/sc' undefined
 (Font)              using `TU/FandolSong-Regular(0)/m/n' instead on input line 
-124.
+121.
 
 [1
 
@@ -1554,7 +1551,7 @@ LaTeX Font Warning: Font shape `TU/FandolSong-Regular(0)/m/sc' undefined
 ]
 
 LaTeX Font Warning: Font shape `TU/txr/m/sl' undefined
-(Font)              using `TU/txr/m/n' instead on input line 138.
+(Font)              using `TU/txr/m/n' instead on input line 135.
 
 [2
 
@@ -1581,7 +1578,7 @@ LaTeX Font Info:    Font shape `TU/FandolSong-Regular(0)/m/sl' in size <10.5393
 File: figure/CalculusBigPicture.jpg Graphic file (type bmp)
 <figure/CalculusBigPicture.jpg>
 
-Overfull \hbox (24.88582pt too wide) in paragraph at lines 204--205
+Overfull \hbox (24.88582pt too wide) in paragraph at lines 201--202
 [][] 
  []
 
@@ -1589,7 +1586,7 @@ Overfull \hbox (24.88582pt too wide) in paragraph at lines 204--205
 File: figure/CaculusContents.jpg Graphic file (type bmp)
 <figure/CaculusContents.jpg>
 
-Overfull \hbox (24.88582pt too wide) in paragraph at lines 223--224
+Overfull \hbox (24.88582pt too wide) in paragraph at lines 220--221
 [][] 
  []
 
@@ -1600,21 +1597,21 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [17]
 
 LaTeX Font Warning: Font shape `TU/txr/m/it' undefined
-(Font)              using `TU/txr/m/sl' instead on input line 236.
+(Font)              using `TU/txr/m/sl' instead on input line 233.
 
 Package hyperref Info: bookmark level for unknown Homework defaults to 0 on inp
-ut line 236.
+ut line 233.
 
 LaTeX Font Warning: Font shape `TU/txr/m/it' undefined
-(Font)              using `TU/txr/m/sl' instead on input line 241.
-
-
-LaTeX Font Warning: Font shape `TU/txr/m/it' undefined
-(Font)              using `TU/txr/m/sl' instead on input line 246.
+(Font)              using `TU/txr/m/sl' instead on input line 238.
 
 
 LaTeX Font Warning: Font shape `TU/txr/m/it' undefined
-(Font)              using `TU/txr/m/sl' instead on input line 251.
+(Font)              using `TU/txr/m/sl' instead on input line 243.
+
+
+LaTeX Font Warning: Font shape `TU/txr/m/it' undefined
+(Font)              using `TU/txr/m/sl' instead on input line 248.
 
 [18]
 第二章
@@ -1690,11 +1687,11 @@ showing Example
 \tf@loe=\write11
 \openout11 = `Calculus.loe'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 428.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 428.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 425.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 425.
  (./Calculus.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 428.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 428.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 425.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 425.
 Package rerunfilecheck Info: File `Calculus.out' has not changed.
 (rerunfilecheck)             Checksum: AFD12F8C070BE8012B9DDB39028BB0E3;7194.
 
@@ -1708,15 +1705,15 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 428.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 425.
  ) 
 Here is how much of TeX's memory you used:
- 50394 strings out of 479819
- 1053262 string characters out of 5895846
+ 50381 strings out of 479819
+ 1052969 string characters out of 5895846
  1203991 words of memory out of 5000000
- 66766 multiletter control sequences out of 15000+600000
+ 66754 multiletter control sequences out of 15000+600000
  543402 words of font info for 81 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 58i,8n,77p,1048b,465s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 58i,7n,77p,1048b,465s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on Calculus.pdf (37 pages).
