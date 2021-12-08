@@ -49,6 +49,7 @@
 \newcommand{\rp}{\right)}
 \newcommand{\lp}{\left(}
 \newcommand{\revision}[1]{{\color{red}{#1}}}
+\newcommand{\note}[1]{{\color{blue}{#1}}}
 \newcommand{\circled}[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
 
 \declaretheorem[numberwithin=chapter, name=例]{Example}
@@ -86,19 +87,7 @@
 \newglossary[nm]{name}{name}{na}{人名与常用翻译}
 \makeglossaries
 
-\newglossaryentry{name:Stern}{type=name,name=Stern,text=Stern, description= Otto Stern（斯特恩）, sort=Stern}
-\newglossaryentry{name:Gerlach}{type=name,name=Gerlach,text=Gerlach, description= Walter Gerlach（盖拉赫）, sort=Gerlach}
-\newglossaryentry{name:Bender}{type=name,name=Bender,text=Bender, description=Edward A. Bender（本德）, sort=Bender}
-\newglossaryentry{name:狄增如}{type=name,name=狄增如,text=狄增如, description=北京师范大学系统科学学院教师, sort=DiZengru}
-\newglossaryentry{name:吴金闪}{type=name,name=吴金闪,text=吴金闪, description=北京师范大学系统科学学院教师, sort=WuJinshan}
-
-
-\newglossaryentry{term:三道门实验}{type=term,name=三道门实验,text=三道门实验, description=Three-Gate experiment, sort=SanDaoMenShiYan}
-\newglossaryentry{term:绳子上的波过三个缝}{type=term,name=绳子上的波过三个缝,text=绳子上的波过三个缝, description={\hspace{2cm} String wave pass through three gates}, sort=ShengZiShangDeBoGuoSanGeFeng, parent=term:三道门实验}
-\newglossaryentry{term:Dirac的光过三块偏振片}{type=term,name=Dirac的光过三块偏振片,text=Dirac的光过三块偏振片, description={\hspace{2.5cm} Light pass through three polarized beam splitter}, sort=DiracDeGuangGuoSanKuaiPianZhenPian, parent=term:三道门实验}
-\newglossaryentry{term:经典力学}{type=term, name=经典力学, text=经典力学, description=Classical Mechanics, sort=JingDianLiXue}
-\newglossaryentry{term:Stern-Gerlach装置}{type=term, name=Stern-Gerlach装置, text=Stern-Gerlach装置, description=Stern-Gerlach apparatuses, sort=Stern-GerlachZhuangZhi}
-
+\include{glossaries}
 
 \begin{document}
 \title{微积分\\
@@ -132,9 +121,9 @@
 
 \vspace{1cm}
 
-\textsc{\Large 科学在于给这个世界寻找合适的数学结构}\\[0.5cm]
+\textsc{\Large 微积分是描述累积量-变化率关系的语言}\\[0.5cm]
 
-\textsc{\Large 学习数学建模需要通过欣赏、临摹和实践}\\[0.5cm]
+\textsc{\Large 微积分是对累积量-变化率关系做推理的语言}\\[0.5cm]
 	
 \textsc{\Large Teach Less, Learn More}\\[0.5cm]
 	
@@ -156,235 +145,268 @@
 
 
 \chapter*{献给}
-\begin{minipage}[l]{0.3\textwidth}
+
 \hspace{4cm}
-\end{minipage}
-\begin{minipage}[l]{0.25\textwidth}
-	我的夫人冯倩，女儿吴立心、吴逸兮
-\end{minipage}
+给常常被我逼迫的也经常逼迫我的学生们
+
                 
      
 \chapter*{致谢}
+
+感谢黄思应，由于其对数学的严肃的深入的不懈的又想偷懒的追求，才有了本书，一本遵循“教的更少，学得更多”，尽可能通过学习最少的具体知识来体会到微积分是什么。
+
 在这里感谢老师、学生、家人
 
 本书的电子版可以从网页\href{http://www.systemsci.org/jinshanw/books}{“吴金闪的书们”}找到。如果你是实体书的读者，需要输入网址的话，它是：\href{http://www.systemsci.org/jinshanw/books}{http://www.systemsci.org/jinshanw/books}。
 
 \chapter*{前言}
 
-%\begin{figure}
-%\begin{center}
-%\includegraphics[width=11cm]{figure/QuantumBook}
-%\caption[本书结构图]{本书的体系结构和大多数书不太一样，对于为什么量子系统的理论形式必须是基于矢量叠加原理的量子力学做了很多的讨论。因此，量子系统的实验行为部分在本书里面也占了很大的篇幅，而理论部分从“密度分布函数”到“密度矩阵”的转变以及转变的原因占了核心的地位。通过这样的结构，我们希望读者除了了解量子力学是什么之外，还能够思考为什么量子力学会这样并对此形成一定的理解。图中的下半部分是一个总结，请读者把它和上半部分联系起来，比如通过思考“例如”的关系：“数学结构”——“例如”——“矢量空间”。}
-%\FigLabel{fig:QuantumBook}
-%\end{center}
-%\end{figure}
+为什么要有这样一本书，核心理念是什么，怎么用这本书。
 
-\part{引论：什么是数学模型和数学建模}
-科学家，尤其是物理学家，其主要目的就是给实际的世界提供一个可计算的可证伪的\footnote{一个理论其所推导出来的结果原则上可以被实验和实践证明是错的，但是迄今为止，还没有被证明是错的就叫做可证伪的但是尚未被证伪的理论。更加深入的讨论见\cite{Popper:Logic}}理想模型，通过对这个理想模型做计算，人们能够得到实际世界的行为。
-
-\chapter{从七桥问题到图论和网络}
-\ChapLabel{Chap:Graph}
-在这一章里， 我们看看，图论是如何受现实世界的启发而发展起来的，以及后来发展成了什么样的进一步的描述世界的数学结构。
+\chapter{世界需要微积分}
+\ChapLabel{Chap:Needs}
+在这一章里，我们通过非常不准确地回顾微积分发展的历史，尤其是我们要假装地并且是蜻蜓点水式地重新提出和解决其发展过程中的各个问题，来体会一下为什么世界需要微积分。
 
 
-\section{奇偶分析和一笔画，图论初步}
-网络科学是从图论发展过来的，而图论据说起源于一个称为“哥尼斯堡（Königsberg）七桥问题”的一笔画问题。
+\section{微积分是描述累积量和变化率这个关系的语言}
+微积分是描述累积量和变化率这个关系的语言，以及符合这个关系的一对或者多对量的语言。例如速度的时间累积是位移，力的空间累积是功（其实势能更准确），以及反过来，位移的时间变化率是速度，功（更准确地，势能）的空间变化率是力。
 
-在哥尼斯堡（Königsberg）有七座桥联通四块陆地，如图\FigRef{Fig:Konigsberg}所示。哥尼斯堡（Königsberg）的人们提出了一个智力游戏，问，如果有人希望在散步的时候把每座桥都走并且只走一遍，请你给他设计一个走的方案。这个问题被称为\gls{term:Königsberg七桥问题}。
+以后为了简单计，我们称累积量和变化率这对关系为积分-微分关系，或者更加符合微积分的语言习惯，称为微分-积分关系。
+
+\section{微积分是对微分-积分关系做逻辑运算的语言}
+发现了微分-积分关系了又怎么样呢？我们需要对微分-积分关系做逻辑推理，来得到一些基于这个关系能够得到的结果。这个时候，微积分的计算就是这个推理过程的语言。
+
+Newton的力学方程和微积分。
+
+
+\section{微积分如何开展研究和计算——无穷小}
+严密的逻辑体系，用最少的基本假设和基本概念构建整个概念大厦。
+
+操作表达式。把一个对象，例如线段、面积，分下去，得到直到无穷小的极限下才正确的表达式（例如微分和积分的定义），回到有限大小仍然正确的表达式（例如微分中值定理、积分中值定理），再合起来。
+
+Maxwell和Maxwell方程的对称性。
+
+$\delta$函数和Green函数。
+
+微积分概念体系自己的逻辑基础，极限，或者说无穷小。无穷小不是零，是一个过程，当然过程的最后结果，也就是在极限下等于零。从极限到连续，从连续到可导，导函数和原函数（不定积分），从极限到定积分，从定积分到不定积分。
+
+\section{需要微积分的其他典型场景}
+函数的级数展开，或者说级数近似，例如，Taylor级数、三角级数（Fourier级数）。从级数展开可以拓展到更一般的函数的基函数展开，例如函数的多项式展开、三角级数展开、Fourier变换。从初等函数过渡到高等函数。
+
+把看起来不是微积分的问题变成微积分的问题，核心是发现微分-积分关系，例如把数论问题变成微积分的问题，把群论问题变成代数问题（李群到李代数）。
+
+\section{微积分发展线路图}
+从哪里走来，走到了哪里，要到哪里去？
+
+从实数域上的极限，到实数域上的导数、微分和积分，到欧式空间（$\mathbb{R}^{n}$）上的导数、微分和积分，到任意流形上的导数、微分和积分。更容易识别和计算更多的微分-积分关系，无论在纯数学中，还是科学中。
 
 \begin{figure}
-\includegraphics[width=13cm]{figure/Konigsberg.png}
-\caption[Königsberg 七桥问题]{Königsberg的 七座桥联通了两条河流分割出来的四块陆地。有一个很闲的人，希望在散步的时候把每座桥都走并且只走一遍，请问他要怎么走？\remark{图按照这张以及wikipedia上的，重新制作。}}
-\FigLabel{Fig:Konigsberg}
+\includegraphics[width=13cm]{figure/CalculusBigPicture}
+\caption[微积分学科大图景]{微积分主要研究什么问题，如何研究，为世界和其他学科解决哪些问题？其自身的理论基础是什么，未来走向哪里？从微积分的学习和使用还可以促进更好地体会数学的哪些方面？}\note{可以再调整一下布局，美观一点}
+\FigLabel{Fig:CalculusBigPicture}
 \end{figure}
 
+\section{本章小结}
+在这一章里面，我们非常粗略地介绍了微积分主要研究什么问题，怎么研究，从哪里来到哪里去，现在怎样。我们把这些叫做一个学科的大图景：典型研究对象、典型研究问题、典型思维方式、典型分析方法、和世界以及其他学科的关系。在这里，我们把大图景放到教给你具体知识之前。
+
+我们这样做是非常危险和困难的，因为你还没有真的学习过微积分，不可能对上面这些微积分的学科大图景产生比较好的理性的和直觉的认知。可是，这是非常有必要的。这会使得我们的学习有方向感不迷失，提升学动机，甚至做创造体验式学习，也就是一边提出和面对挑战，一边假装着创造尽管前人已经创造出来过的知识，而达到主动学习的目标，从而将来更容易把学到的知识做创造性使用或者用于创造新知识。有的时候，学习数学容易变成跟着教材一步步地走，不知道走向哪里，直到有一天看到整体从而幡然醒悟之前为什么这样学为什么学这些，或者直到看不到整体，不能醒悟也能忍受而放弃。
+
+这就好像你去一个地区旅游，你不希望你仅仅是做无脑随机行走或者无脑跟着导游走，而是你希望提前能够看到一张地图，或者有人给你介绍一下概貌，接着在爬山的过程中不断地加深对这个整体地图的认知。在学习上，这就是尽量学之前就有一个概貌，学习过程中不断地丰富和深化这个概貌，并且冲着这个概貌去学习，去提出和面对问题创造知识来学习。这样的学习能够做到“教的更少，学的更少，学得更多”，通过学习（或者说假装着创造）最少量的最核心的具体知识领会到这个学科的大图景。这样的学习被称为“人类知识高速公路上以高层知识生成器为目标的理解型学习”\cite{Wu:TLLM}。
+
+本章参考了Strogatz的《Infinite Powers: How Calculus Reveals the Secrets of the Universe》\cite{Strogatz:InfinitePowers}，张筑生的《数学分析新讲》第一册\cite{Zhang:Calculus}， Morris的《Mathematical thought from ancient to modern times》\cite{Kline:Thought}和《Calculus: An Intuitive and Physical Approach》\cite{Kline:Calculus}，Spivak的《Calculus》\cite{Spivak:Calculus},
+\cite{Apostol:Calculus}。以及Apostol的《Calculus, Vol. 1: One-Variable Calculus, with an Introduction to Linear Algebra》。
+
+注意，我们已经知道了将来微积分要能够处理累积量-变化率这对关系，以及由这对关系所描述的两个量，甚至若干对联合在一起的这样的关系所描述的多个量。我们也已经知道这样的关系的例子，例如曲线形状和曲线在某点的切线的斜率，例如速度和位移，例如力和功。我们下一步的任务是构建出来这样的知识体系，尽可能从最少的假设也就是公理和定义出发。警告，历史上，这是一次对数学的挑战，或者说数学危机——有微分和积分但是没有相应的基础概念来清楚地定义微分和积分。
+
+这是这个微积分知识体系的结构图，或者称为微积分学科概念网络。
 \begin{figure}
-\includegraphics[width=13cm]{figure/Konigsberg2.png}
-\caption[Königsberg 七桥问题]{Königsberg的 七座桥联通了被两条河流分割出来的四块陆地。有一个很闲的人，希望在散步的时候把每座桥都走并且只走一遍，请问他要怎么走？\remark{或者直接用wikipedia版本也行，则需要做如下的致谢：图片来自于Wikipedia“Seven Bridges of Königsberg”词条，原作者Bogdan Giuşcă，此图的分享遵循原作者选择的“\href{https://creativecommons.org/licenses/by-sa/3.0/deed.en}{Creative Commons Attribution-Share Alike 3.0 Unported}”协议。}}
-\FigLabel{Fig:Konigsberg2}
+\includegraphics[width=13cm]{figure/CaculusContents}
+\caption[微积分学科概念网络]{微积分包含哪些主要公理、定义和定理，它们之间于什么关系，这些定义和定理分别解决了微积分学科大图景中的哪些主要问题？}\note{可以再调整一下布局，美观一点}
+\FigLabel{Fig:CaculusContents}
 \end{figure}
+下面，我们来一起把这个知识体系构建起来。
 
-数学家\gls{name:Euler}解决了这个问题：证明不存在这样的过且仅过哥尼斯堡（Königsberg）的每一座桥一次的走法，并且把这个问题推广成了任意的有顶点和连边构成的图是否可以一步画的判定定理。下面我们学着\gls{name:Euler}来解决一下这个问题。这一小节的资料主要来自于\href{https://en.wikipedia.org/wiki/Seven\_Bridges\_of\_K\%C3\%B6nigsberg}{Wikipedia“Seven Bridges of Königsberg”词条}\footnote{https://en.wikipedia.org/wiki/Seven\_Bridges\_of\_Königsberg，\today　访问。}以及\gls{name:姜伯驹}的《一笔画和邮递路线问题》\cite{Hua:Collection}。
-
-首先，\gls{name:Euler}注意到，在每一块陆地之内怎么散步跟这个问题没关系。于是，每一块陆地都可以看做一个点，从而忽略陆地的细节，以及连接同一块陆地上的多座桥是否在同一个地点连接的问题。我们把陆地分解标记为SCEN，其中$S$代表南边的陆地，$C$代表中间的陆地，$E$代表东面的陆地，$N$代表北面的陆地。现在，我们把每个区域看做一个点，主要留下每一对区域之间有几座桥这个信息，就得到了简化了的图\FigRef{Fig:Konigsberg4}。
-
-\begin{figure}
-\includegraphics[width=13cm]{figure/Konigsberg4.png}
-\caption[Königsberg 七桥问题示意图]{把Königsberg的每块陆地变成一个点，保留任意两个点之间有几座桥的信息，得到的简化图。\remark{图重新做，加上SCEN的标记。}}
-\FigLabel{Fig:Konigsberg4}
-\end{figure}
-
-我们发现，$S$区域有三座桥和其他区域相连（分别是$SC, SC, SE$），$C$区域有五座桥和其他区域相连（分别是$CS, CS, CN, CN, CE$），$E$区域有三座桥和其他区域相连（分别是$ES, EC, EN$），$N$区域有三座桥和其他区域相连（分别是$NC, NC, NE$）。现在，原始的每座桥走且仅走一次的散步计划的问题，就成了一笔画问题：在由顶点和连边构成的图上，需要放下和拿起来笔一次中间不能再次拿起来从其他地方重新开始，连续地把所有的连边都画并且仅仅画一次。
-
-接着，对于这个一笔画问题，\gls{name:Euler}发现，除了当做开始和结束的顶点（称为起点和终点，它们也可以是同一个顶点），其他顶点必须经过偶数次。为什么呢？因为一笔画的时候，除了起点和终点，都必须进去以后在出来，而且每一次进去就对应着一次出来。由于每一次进出必须用到一条边，而且这条边还必须和之前的边不同，因此，这也就意味着，一笔画的时候，除了起点和终点的其他顶点必须有偶数条边和其他顶点相连。我们把一个顶点的连到其他顶点的边的数量称为这个顶点的度。于是，如果可以一笔画，则这个图除了起点和终点，其他顶点的度必须是偶数。
-
-再来考虑起点和终点。如果起点和终点不相同，则可以允许它们的度为奇数。例如，一条线直接把两个顶点相连，这能够一笔画，起点和终点的度都是$1$，奇数。如果起点和终点相同，则这个顶点既进又出，每次进出也同样必须有两条连边，因此这个顶点的度是偶数。也就是说，对于一笔画来说，我们可以有$0$个或者$2$个度为奇数的顶点。
-
-合起来，我们得到
-\begin{Theorem}
-{一笔画问题的必要条件}{}由顶点和连边构成的图，可以一笔画的必要条件（必须满足下面的条件才可能一笔画出来）是，图是连同的，有$0$个或者$2$个度为奇数的顶点，其他的顶点的度都是偶数。
-\end{Theorem}
-我们用这个条件来看一下Königsberg 七桥问题：连通\footnote{将来，我们还会学习到甚至自己来构建判断连通性的更简单的算法，目前，你只能通过来试试，是否从任意一个顶点开始都可以走到任意另一个顶点上去。}，但是$S、C、E、N$的度分别是$3$、$5$、$3$、$3$，四个奇数度的顶点不满足要求，因此不能一笔画，也就是不存在每一座桥经过而且只一次的散步路线。
-
-实际上，\gls{name:Euler}还猜测，这个必要条件是充分条件，也就是
-\begin{Theorem}
-{一笔画问题的充分条件}{}由顶点和连边构成的图，如果是连通的，并且有$0$个或者$2$个度为奇数的顶点，其他的顶点的度都是偶数，则肯定可以一笔画出来。
-\end{Theorem}
-这个定理由数学家\gls{name:Hierholzer}证明，并且\gls{name:Hierholzer}还给出了一笔画的算法\footnote{这个算法就被称为Hierholzer算法。有兴趣的可以去进一步了解。}，也就是回答了一旦满足这个条件，如何把一笔画的顺序找出来的问题。充分条件的定理的证明我们就不在这里展开了。
-
-我们看到，通过把是否可以一笔画的问题和怎么来做一笔画的问题分开，并且把问题归结为顶点的度的计算的问题，我们得到了非常容易的判断一张图是否可以一笔画的条件。
-
-一笔画问题是巧妙运用奇偶分析来解决问题的一个例子。奇偶分析是一个非常具有一般性而且有威力研究问题的角度。将来在\SecRef{Sec:irrational}和\SecRef{Sec:Contradiction}，我们还会用它来证明一个自己跟自己乘起来等于$2$的数\footnote{这个数满足$a\times a =2$。将来，我们会把它记做$\sqrt{2}$。}不是分数。
-
-前面的一笔画问题的解决过程还体现了抽象——把具体的包含多个属性大量细节的对象变成更加具有一般性的往往还更加简单的包含更少属性和细节的对象，同时保证解决了这个更简单更一般的对象的问题之后可以回来解决那个更具体的对象上的问题——在数学思维中的重要性。如果Euler不去忽略每个岛的细节而把问题变成了仅仅包含“顶点”和“连边”的对象的问题，那一笔画的问题就不可能被Euler这样解决，或者说，至少就算能解决也仅仅解决了 \gls{term:Königsberg七桥问题}，而不能用于其他类似的问题。正是由于这个对一笔画问题的抽象实在太深刻而成功了，因此，后来以此为基础还发展出来两个数学分支学科：一个叫做图论或者后来称为网络科学，一个是拓扑学。
-
-前面的一笔画问题的解决过程还体现了“把存在性证明和找算法这两步分开”，甚至在任何本来是寻找算法的问题中，尽量先尝试存在性证明，这个数学思维的力量。如果Euler不去思考解的存在性，而是一直关注如何画图，也就是求解问题，那一笔画的问题就不可能被Euler这样解决。
 
 \section{推荐阅读材料}
-推荐阅读吴军的《数学之美》\cite{Wu:MathBeauty}和\gls{name:Gowers}的《牛津通识读本：数学》。
+本章相关内容推荐大家去阅读一下：Strogatz的《Infinite Powers: How Calculus Reveals the Secrets of the Universe》\cite{Strogatz:InfinitePowers}，张筑生的《数学分析新讲》第一册\cite{Zhang:Calculus}，\gls{name:Gowers}的《牛津通识读本：数学》。
 
 
 \section{作业}
 \begin{Homework}			
 阅读\gls{name:Gowers}的《牛津通识读本：数学》\cite{Gowers:Math}，并做读书报告，回答：说了什么，怎么说的，为什么这样说为什么说这个，我觉得怎么样也就是对我有什么意义。
+\HWLabel{HW:Gowers}
+\end{Homework}
+
+\begin{Homework}			
+阅读Strogatz的《Infinite Powers: How Calculus Reveals the Secrets of the Universe》\cite{Strogatz:InfinitePowers}，并做读书报告，回答：说了什么，怎么说的，为什么这样说为什么说这个，我觉得怎么样也就是对我有什么意义。
+\HWLabel{HW:Strogatz}
+\end{Homework}
+
+\begin{Homework}			
+阅读\gls{name:吴金闪}的《教的更少，学得更多》\cite{Wu:TLLM}，学会制作概念地图，并做读书报告。读书报告要求概念地图和文字相结合，回答：说了什么，怎么说的，为什么这样说为什么说这个，我觉得怎么样也就是对我有什么意义。
+\HWLabel{HW:Wu}
+\end{Homework}
+
+\begin{Homework}			
+建议你在完成作业\HWLabel{HW:Wu}之后，把上面的作业\HWLabel{HW:Gowers}和作业\HWLabel{HW:Strogatz}重新完成一次，按照概念地图和文字结合的方式。对比一下前后两次的作业。
 \end{Homework}
 
 
-\chapter{经典力学和微积分}
-\ChapLabel{Chap:Calculus}
-在这一章里， 我们看看，微积分是在什么样的背景下提出来的，是为了描述和解决什么问题的。当然，微积分的完善是纯数学基础数学的研究问题，但是，它的提出其实是一个数学建模，至少从Newton的角度。
+
+\chapter{实数}
+\ChapLabel{Chap:RealNumber}
+在这一章里， 我们来定义实数。我们会考虑到实数需要什么性质，目前能够清楚定义哪些性质，目前暂时接受将来再搞清楚哪些性质。
+
+有界必有确界。
+
+Couchy收敛性。
+
+\section{集合论}
+补充一点点集合论。集合、映射、子集、交集、并集、开集、闭集、卡氏积、关系、定价关系和等价类。
+
+从集合论到整数。
+
+\section{从整数到实数}
+
+\section{实数是个过程以及极限的朴素思想}
+
+\section{实数的公理化定义和数学危机}
+
+\section{有界集合有确界}
+
+\section{推荐阅读材料}
 
 \section{作业}
-\begin{Homework}			
-阅读\gls{name:Bender}的《数学模型引论》\cite{Bender:MathModel}，并做读书报告，回答：说了什么，怎么说的，为什么这样说为什么说这个，我觉得怎么样也就是对我有什么意义。
-\end{Homework}
-
 
 
 \section{本章小结}
 
+\chapter{极限}
+\ChapLabel{Chap:Limit}
+为了定义导数，我们需要无穷小，一个很神奇的等于零又不等于零的东西（过程、数）。
 
-\chapter{量子力学和矢量代数}
-\ChapLabel{Chap:Vector}
+\section{序列和序列的极限}
+自然语言和$\epsilon-N$语言。
 
-在这一章里， 我们看看量子系统为什么用Hilbert空间的矢量和算符来描述。在这个问题上，数学走在了物理学的前面。有的时候，物理学的现象和概念使得数学的概念得到提出和发展。有的时候，数学的概念在物理学里面得以发挥作用。
-\section{典型经典随机现象和经典随机描述}
-\section{典型量子现象}
-\begin{figure}
-\begin{center}
-\includegraphics[width=6cm]{figure/GlassReflect.eps}
-\caption[Feynman的光过玻璃示意图]{光子经过一块玻璃，可以在玻璃的两个界面上发生反射和透射。那么从第一个界面出来的光就可能是第一次反射形成的，也可能是第一个界面和第二个界面反射并且在第一个界面透射以后形成的。这样互斥事件形成的光能够相互抵消吗？如果不能，我们给相机镜头镀膜——这里把膜看作新的一层玻璃——干什么？}
-\FigLabel{fig:GlassReflect}
-\end{center}
-\end{figure}
+\section{无穷小}
 
-\begin{Experiment}
-[相机镜头上的贴膜形成的光的干涉现象]：镜头上的贴膜就是让光尽可能多地通过镜头之前的膜而不是被这个膜反射太多\cite{Moghal:Antireflection}，然后，也降低在膜和镜头——可以是玻璃或者塑胶——之间的反射。现在，我们来关心前半部分——如\FigRef{fig:GlassReflect}所示的光过膜的两个界面——的过程。为了简单起见，我们用Feynman在《QED: The Strange Theory of Light and Matter》\cite{Feynman:Strange}中的光过玻璃的例子——把光过贴膜改成光过玻璃。概念上两者没有区别。
-\end{Experiment}
+\section{Cauchy序列和收敛序列}
 
-\begin{figure}
-\begin{center}
-\includegraphics[width=8cm]{figure/Dirac3Polar}
-\caption[Dirac的光三块偏振片]{（a）.光过两块平行偏振片（透过）。（b）.光两块垂直偏振片（挡住）。（c）.光过三块偏振片——最前最后两块相互垂直，中间的偏振片处于前后两者之间的某一角度（透过）。}
-\FigLabel{fig:Dirac3Polar}
-\end{center}
-\end{figure}
+\section{区间套定理}
 
-\begin{Experiment}
-[\gls{term:Dirac的光过三块偏振片}]：找三块完全相同的偏振片来做如\FigRef{fig:Dirac3Polar}所示的三个实验。先拿其中的两块做实验$A$：一手拿一块偏振片，把两块偏振片完全平行地放在面前，透过镜片看物体。观察是否能够看到东西，还是基本不能透光？再拿这两块做实验$B$：一手拿一块偏振片，把两块偏振片垂直地放在面前，透过镜片看物体。观察是否能够看到东西，还是基本不能透光？接着取出第三块镜片，做实验$C$：把第三块镜片以某个角度——与之前的镜片都不平行——插入到实验$B$的两块之间（这时候你可能需要别人帮忙）。观察是否能够看到东西，还是基本不能透光？
+\section{函数的极限和连续性}
+联系函数（映射）、连续函数介值定理
 
-实验结果是：$A$通过两个平行镜片看物体，基本上没变（光的强度有变化，但是能够清楚地看到镜片之后的物体）；$B$通过两个垂直镜片看物体，基本上看不到镜片之后的物体；$C$增加一个镜片以后，之前不能看到的镜片之后的物体又能够看到了。
-\end{Experiment}
+自然语言和$\epsilon-\delta$语言。
 
-\begin{figure}
-\begin{center}
-\includegraphics[width=6cm]{figure/Polarizer.jpg}
-\caption[便宜的偏振片]{这个偏振片专门是开发了做教具的，非常便宜。}
-\FigLabel{fig:Polarizer}
-\end{center}
-\end{figure}
-这个（将来我们会看到的）量子效应如此显著的实验，竟然是可以在家里做的，只要购买三个偏振片，例如偏振墨镜或者如\FigRef{fig:Polarizer}的教具。
+\section{推荐阅读材料}
 
-\begin{figure}
-\begin{center}
-\includegraphics[width=6cm]{figure/QMPBS.eps}
-\caption[光子which-way实验装置示意图]{光子which-way实验装置示意图。其中最后一步把两个不同路径来的光又合起来然后进入偏振分束器在实验中需要一个额外的仪器来完成。在这个示意图里面我们只需了解能够做到这样的合起来就可以了。注意偏振分束器的内部方向和图中的仪器的摆放方向不是一个东西。}
-\FigLabel{fig:QMPBS}
-\end{center}
-\end{figure}
+\section{作业}
+求一些序列极限，求几个极限的四则运算，判断几个函数是否连续
 
-\begin{Experiment}
-[光子which-way实验]：如\FigRef{fig:QMPBS}所示，一个光子经过第一面内部方向为$45^{0}$（见图中所示的坐标系）偏振分束器之后，只允许透射光过去，反射光被完全挡住。然后这个光子继续经过一个$0^{0}$的偏振分束器。经过这个分束器的光子可能走两条路径。不管走哪一条，它都会被反射会到同一个位置（右下角），然后被引入到第三个内部方向为$45^{0}$偏振分束器。问：分束器之后的探测器$D_{T}$和$D_{R}$上都会有接收到光子的可能吗？
+\section{本章小结}
 
-这个实验的结果\footnote{实际的实验在最后一步探测的不是“哪一个方向上有粒子”，而是探测是否两个路径上过来的粒子“是否会出现干涉条纹”\cite{Lukishova:Rochester}。如果有干涉条纹则表示路径信息消失了，就不能问“粒子到底从哪一条路上过来”了。}是只有$D_{T}$上有光子到达。
-\ExpLabel{exp:photonwhichway}
-\end{Experiment}
-\begin{figure}
-\includegraphics[width=12cm]{figure/SternGerlach2}
-\caption[自旋的Stern-Gerlach装置]{来自于\gls{name:Stern}和\gls{name:Gerlach}的自旋\gls{term:Stern-Gerlach装置}示意图。图片来自于Wikipedia页面\url{https://en.wikipedia.org/wiki/Stern-Gerlach_experiment}。}
-\FigLabel{fig:SternGerlach}
-\end{figure}
 
-\begin{figure}
-\includegraphics[width=12cm]{figure/SG.eps}
-\caption[自旋过Stern-Gerlach装置示意图]{自旋经过一个Stern-Gerlach装置——其内部就是一个磁场——之后挡住向下的输出，这样从装置出来的状态就是第一个装置的向上方向。接着让这个输出的自旋再一次经过同样方向的装置——得到仅有一个向上的输出结果。}
-\FigLabel{fig:SGSzSz}
-\end{figure}
+\chapter{导数}
+\ChapLabel{Chap:Derivative}
+有了函数的极限，我们来定义导数，以及做一些简单计算。
 
-\section{量子现象的数学描述}
-为什么要有矢量加法，为什么要有非对易算符
+\section{导数的定义}
+导数的定义和几个典型初等函数的导数的计算。可导函数的条件。处处连续处处不可导的函数。光滑性的定义。
 
-\chapter{毛皮贸易及其背后的捕食者－被捕食者模型}
-\ChapLabel{Chap:Lotka-Volterra}
+\section{高阶导数的定义}
+对前一阶导函数再求导数。无穷小领域内的Taylor级数，$o(\Delta x)$和$O(\Delta x)$的定义。
 
-\chapter{第一部分总结：什么是数学模型和数学建模}
-\ChapLabel{Chap:Part1}
+\section{函数极值点的导数}
+可导函数、连续函数，在某点取到极值的条件。
 
-\part{数学建模的典型思维方式}
+\section{不定积分}
+原函数（不定积分）和导函数。差一个常数的函数等价类。
 
-\chapter{假设的提出修改和精炼}
-\ChapLabel{Chap:Assumption}
-抓住主要矛盾，简化，冲着某个目标，不断地挑战和修订假设，不断地思考计算的意义和条件
+\section{Lagrangian微分中值定理}
+无穷小形式和有限大小形式
 
-\chapter{数学基础和学习的问题}
-\ChapLabel{Chap:Basis}
-画画，先学会技巧，还是先学会表达，能一起学吗？写作，先有思想，还是现有先做技巧，能一起有吗？
+\section{不定积分的解析计算}
 
-学习数学，需要回到概念和计算提出来的场景下。
+\section{微分和微商}
+线性主部，一元函数中微商和导数为什么是同一个东西
 
-数学就是需要的时候，我去创造它。如果已经被创造，那就算别人的，我就用好它。
+\section{推荐阅读材料}
+画个概念地图，做几个简单导数的计算，几个简单不定积分的计算
 
-\chapter{系统图示法}
-\ChapLabel{Chap:Diagram}
-一切在于联系，内部、外界
+\section{作业}
 
-量纲分析：确定有哪些因素的意义
+\section{本章小结}
 
-系统科学
-\chapter{第二部分总结：大概如何数学建模}
-\ChapLabel{Chap:Part2}
+\chapter{定积分}
+\ChapLabel{Chap:Integral}
+通过极限定义定积分，把定积分的计算变成不定积分的计算，
 
-\part{数学建模赏析和练习}
+\section{定积分的定义}
+定积分的定义和几个典型初等函数的定积分的计算。
 
-\chapter{连续状态动力学过程的建模的几个例子}
-\ChapLabel{Chap:DE}
-动力学方程的思想——状态、状态演化和技术——微分方程模型
+\section{定积分的数值计算}
+算出来结果，试着和不定积分原函数对比一下
 
-\chapter{离散状态动力学过程的建模的几个例子}
-\ChapLabel{Chap:Markov}
-Markov过程
+\section{Newton-Leibniz定积分-不定积分关系}
+定积分化成不定积分来计算，不定积分通过看做导数求逆来计算。
 
-\chapter{粗糙的数学问题集以及少量提示}
-\ChapLabel{Chap:Questions}
-关键在于尝试、练习和指导
+不定积分看做积分上线为变量的定积分。
 
-\chapter{第三部分总结：再一次问如何数学建模}
-\ChapLabel{Chap:Part3}
+\section{积分中值定理}
+
+\section{推荐阅读材料}
+画个概念地图，做几个简单导数的计算，几个简单定积分的数值和解析计算
+
+\section{作业}
+
+\section{本章小结}
+
+\chapter{三角级数}
+\ChapLabel{Chap:TrigoExpansion}
+\section{三角函数的积分微分和正交性}
+
+\section{函数的三角函数级数展开}
+
+\section{函数的Fourier级数展开}
+
+\section{函数的Fourier变换}
+
+\section{推荐阅读材料}
+画个概念地图，做几个简单导数的计算，几个简单定积分的数值和解析计算
+
+\section{作业}
+
+\section{本章小结}
+
+
+\chapter{简单微分方程}
+\ChapLabel{Chap:DiffEqu}
+微分-积分关系的直接计算——求导或者求积分，一阶微分方程——只包含原函数和导函数的方程——的求解，高阶常系数齐次微分方程的求解。
+
+\section{微分方程的定义}
+方程、初始条件、边条件
+
+\section{一阶可分离变量的微分方程}
+
+\section{二阶常系数齐次微分方程}
+
+\section{高阶系数齐次微分方程}
+
+\section{微分方程数值求解}
+Euler方法，Runge-Kutta方法。
+
+\section{推荐阅读材料}
+画个概念地图，求解几个简单的微分方程的数值和解析解。
+
+\section{作业}
+
+\section{本章小结}
 
 \chapter*{结束语}
 整本书到此结束。本书在内容选择甚至具体内容的展开上都和大多数书不太一样。希望这个企图做到不一样的努力能够对于学习者的学习和理解有点效果（make a difference）。 
 
-内容上贯穿全书的是从什么是数学模型什么是数学建模——为现实世界找到忠实或者近似忠实的数学表示。
+内容上贯穿全书的是从什么是微积分——关于微分和积分关系的语言。
 
 谢谢你作为学习者付出的时间和努力，希望你喜欢这个深入思考的过程。
 
@@ -392,7 +414,7 @@ Markov过程
 %\bibliographystyle{gbt7714-2005} %多作者会出问题，全大写，愚蠢的GB标准，当有西班牙与字符的时候
 \bibliographystyle{buptthesis} %好用
 %\bibliographystyle{GBT7714-2005NLang-UTF8} %全大写，愚蠢的GB标准，当有西班牙与字符的时候
-\bibliography{MathModel}
+\bibliography{Calculus}
 \addcontentsline{toc}{chapter}{参考文献}
 
 \printglossary[type=term]
@@ -403,4 +425,4 @@ Markov过程
 \listoftheorems[ignoreall,show={Example}]
 \addcontentsline{toc}{chapter}{举例目录}
 
- \end{document}
+\end{document}
